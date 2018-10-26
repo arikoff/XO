@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cursor_h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/cursor_h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/GameField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/Settings.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/SettingsDialog.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/Square.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/cursor_h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOfx/sample/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cursor_h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XOmain/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XOmain/GameField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XOmain/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XOsettings/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/SettingsDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/XOsettings/SettingsDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XOmain/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/cursor_h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/XOmain/sample.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="v.1.02" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -90,7 +69,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="10" />
-          <entry key="fxml" value="2" />
+          <entry key="fxml" value="3" />
           <entry key="java" value="14" />
         </counts>
       </usages-collector>
@@ -98,18 +77,20 @@
         <counts>
           <entry key="CLASS" value="10" />
           <entry key="JAVA" value="14" />
-          <entry key="XML" value="2" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="220" />
-          <entry key="java" value="1995" />
+          <entry key="java" value="2008" />
+          <entry key="txt" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1995" />
+          <entry key="JAVA" value="2008" />
+          <entry key="PLAIN_TEXT" value="7" />
           <entry key="XML" value="220" />
         </counts>
       </usages-collector>
@@ -147,11 +128,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/XOmain/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+            <state relative-caret-position="-987">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#buttonSettings#0;class#Controller#0" />
                 <element signature="method#mouseMovedCanvasCheck#0;class#Controller#0" />
                 <element signature="method#LineIsPossible#0;class#Controller#0" />
                 <element signature="method#StartNewGame#0;class#Controller#0" />
@@ -160,7 +140,6 @@
                 <element signature="method#checkInside#0;class#Controller#0" />
                 <element signature="method#makeMove#0;class#Controller#0" />
                 <element signature="method#updateResult#0;class#Controller#0" />
-                <element signature="method#OpenSettings#0;class#Controller#0" />
               </folding>
             </state>
           </provider>
@@ -182,6 +161,16 @@
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/XOmain/sample.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="25" column="78" lean-forward="true" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -255,6 +244,17 @@
             <path>
               <item name="XOfx" type="b2602c69:ProjectViewProjectNode" />
               <item name="XOfx" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XOfx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="XOfx" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XOfx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="XOfx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,7 +290,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540559807534" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540559990535" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="C:/Distrib/Java/javafx-sdk-11/lib/javafx.web.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -399,6 +399,14 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="v.1.02">
+      <created>1540559897478</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1540559897478</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -406,9 +414,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.42208776" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.30030257" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -417,7 +424,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30769232" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3617021" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36824876" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -482,18 +489,8 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/XOmain/Controller.java</url>
-          <line>277</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="v.1.02" />
+    <option name="LAST_COMMIT_MESSAGE" value="v.1.02" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -572,14 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/XOmain/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/XOsettings/SettingsDialog.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -622,13 +611,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/XOmain/sample.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="25" column="78" lean-forward="true" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/XOmain/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        <state relative-caret-position="-987">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#buttonSettings#0;class#Controller#0" />
             <element signature="method#mouseMovedCanvasCheck#0;class#Controller#0" />
             <element signature="method#LineIsPossible#0;class#Controller#0" />
             <element signature="method#StartNewGame#0;class#Controller#0" />
@@ -637,7 +633,6 @@
             <element signature="method#checkInside#0;class#Controller#0" />
             <element signature="method#makeMove#0;class#Controller#0" />
             <element signature="method#updateResult#0;class#Controller#0" />
-            <element signature="method#OpenSettings#0;class#Controller#0" />
           </folding>
         </state>
       </provider>
