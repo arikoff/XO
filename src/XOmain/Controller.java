@@ -1,4 +1,4 @@
-package sample;
+package XOmain;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +12,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import XOsettings.Settings;
 
 public class Controller {
 
@@ -23,9 +24,6 @@ public class Controller {
     private boolean gameStarted = false;
     Settings settings = Settings.getInstance();
     private int maxScore=0;
-
-    @FXML
-    private Button NewGame;
 
     @FXML
     private Label labelCurrentPlayer;
@@ -275,7 +273,7 @@ public class Controller {
     }
 
     private void OpenSettings() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SettingsDialog.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/XOsettings/SettingsDialog.fxml"));
         Stage newStage = new Stage();
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.setTitle("XO game settings");

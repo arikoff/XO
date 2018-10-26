@@ -1,4 +1,4 @@
-package sample;
+package XOmain;
 
 public class GameField {
 
