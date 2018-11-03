@@ -1,18 +1,27 @@
 package XOmain;
 
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.EventLoopGroup;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioSocketChannel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import XOsettings.Settings;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -24,6 +33,14 @@ public class Controller {
     private boolean gameStarted = false;
     Settings settings = Settings.getInstance();
     private int maxScore=0;
+
+    private boolean isServer = false;
+    private boolean isServerMove = false;
+    private boolean isNetGame = false;
+    private boolean clientConnected = false;
+
+    static final String HOST = System.getProperty("host", "127.0.0.1");
+    static final int PORT = Integer.parseInt(System.getProperty("port", "8992"));
 
     @FXML
     private Label labelCurrentPlayer;
@@ -37,6 +54,16 @@ public class Controller {
     @FXML
     public void buttonNewGame(){
         StartNewGame();
+    }
+
+    @FXML
+    public void buttonStart() {
+        StartNetGame();
+    }
+
+    @FXML
+    public void buttonJoin() {
+        JoinNetGame();
     }
 
     @FXML
@@ -65,7 +92,7 @@ public class Controller {
             return;
         }
 
-        if (LineIsPossible(x, y)) {
+        if (!(gf.LineIsPossible(x, y) == 0)) {
             gameCanvas.setCursor(Cursor.HAND);
         }
         else {
@@ -74,33 +101,9 @@ public class Controller {
 
     }
 
-    private boolean LineIsPossible(int x, int y) {
-
-        int dx = (x + 2) % 20;
-        int dy = (y + 2) % 20;
-
-        if (dx <= 4 && dy > 4) { //вертикальная линия
-            int i = (x+2)/20;
-            int j = y / 20;
-            Square s = gf.field[i][j];
-            return (checkInside(i, j) && !s.left);
-        }
-
-        else if (dy <= 4 && dx > 4) { //горизонтальная линия
-            int i = x / 20;
-            int j = (y+2) / 20;
-            Square s = gf.field[i][j];
-            return (checkInside(i, j) && !s.top);
-        }
-
-        else {
-            return false;
-        }
-
-    }
-
     //создает и заполняет игровое поле
     private void StartNewGame(){
+
 
         gameStarted = true;
 
@@ -111,7 +114,7 @@ public class Controller {
 
         for (int i=0; i<s; i++){
             for (int j=0; j<s; j++){
-                ShowSquare(i, j , gf.field[i][j]);
+                ShowSquare(gf.field[i][j]);
             }
         }
 
@@ -124,56 +127,98 @@ public class Controller {
 
     }
 
+    private void StartNetGame() {
+
+        isServer = true;
+        isNetGame = true;
+        isServerMove = true;
+
+        StartNewGame();
+
+//        EventLoopGroup group = new NioEventLoopGroup();
+//
+//        try {
+//            Bootstrap b = new Bootstrap();
+//            b.group(group)
+//                    .channel(NioSocketChannel.class)
+//                    .handler(new SecureChatClientInitializer(sslCtx));
+//
+//            // Start the connection attempt.
+//            Channel ch = b.connect(HOST, PORT).sync().channel();
+//
+//            // Read commands from the stdin.
+//            ChannelFuture lastWriteFuture = null;
+//            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+//
+//            for (;;) {
+//                String line = in.readLine();
+//                if (line == null) {
+//                    break;
+//                }
+//
+//                // Sends the received line to the server.
+//                lastWriteFuture = ch.writeAndFlush(line + "\r\n");
+//
+//                // If user typed the 'bye' command, wait until the server closes
+//                // the connection.
+//                if ("bye".equals(line.toLowerCase())) {
+//                    ch.closeFuture().sync();
+//                    break;
+//                }
+//            }
+//
+//            // Wait until all messages are flushed before closing the channel.
+//            if (lastWriteFuture != null) {
+//                lastWriteFuture.sync();
+//            }
+//        } finally {
+//            // The connection is closed automatically on shutdown.
+//            group.shutdownGracefully();
+//        }
+
+    }
+
+    private void JoinNetGame() {
+
+        isServer = false;
+        isNetGame = true;
+        StartNewGame();
+
+    }
+
     public void checkMove(MouseEvent t){
+
+        if (isNetGame && (isServer != isServerMove)) return;
+
         //получили координаты точки
         int x = (int) t.getX();
         int y = (int) t.getY();
 
-        int i, j;
-        boolean d1, d2;
-
-        //попытку хода считаем в том случае, если точка +- 2 пиксела от потенциальной линии и дальше 2 пикселов от других линий
-        int dx = (x+2)%20;
-        int dy = (y+2)%20;
-
-        if (dx <= 4 && dy > 4) { //вертикальная линия
-
-            i = (x+2)/20;
-            j = y / 20;
-
-            if (!LineIsPossible(x, y)) return;
-
-            Square s = gf.field[i][j];
-            s.left = true;
-            d1 = makeMove(i, j, s);
-
-            i--;
-            s = gf.field[i][j];
-            s.right = true;
-            d2 = makeMove(i, j, s);
-
-            if (!(d1 || d2)) {
-                switchPlayer();
+        //проверяем, возможен ли ход
+        int line = gf.LineIsPossible(x, y);
+        if (!(line == 0)) {
+            //если возможен - делаем и получаем клетки, которые нужно проверить
+            ArrayList<Square> squares = gf.MakeMove(x, y, line);
+            //для каждой клетки проверям, закрылась ли она
+            boolean switchMove = true;
+            for (int i=0; i<squares.size(); i++) {
+                //если закрылась - рисуем символ и увеличиваем счет
+                Square s = squares.get(i);
+                if (s.IsComplete()){
+                    s.Fill(currentPlayer);
+                    if (currentPlayer == 'X') {
+                        resultX++;
+                    }
+                    else {
+                        resultO++;
+                    }
+                    updateResult();
+                    switchMove = false;
+                }
+                ShowSquare(s);
             }
-        }
-
-        if (dy <= 4 && dx > 4) { //горизонтальная линия
-
-            i = x / 20;
-            j = (y+2) / 20;
-
-            if (!LineIsPossible(x, y)) return;
-            Square s = gf.field[i][j];
-
-            s.top = true;
-            d1 = makeMove(i, j, s);
-
-            j--;
-            s = gf.field[i][j];
-            s.bottom = true;
-            d2 = makeMove(i, j, s);
-
-            if (!(d1 || d2)) {
+            //если не закрылась - передаем ход
+            if (switchMove) {
                 switchPlayer();
             }
         }
@@ -189,35 +234,6 @@ public class Controller {
 
         labelCurrentPlayer.setText("" + currentPlayer);
 
-    }
-
-    private boolean checkInside(int i, int j) {
-
-        int size = gf.size-1;
-        int mid = size/2;
-
-        if (i + j < mid) return false;
-        if (i + j > mid*3) return false;
-        if ((i < mid) && (j-i > mid)) return false;
-        if ((j < mid) && (i-j > mid)) return false;
-
-        return true;
-    }
-
-    private boolean makeMove(int i, int j, Square s) {
-
-        boolean done = s.checkfill(currentPlayer);
-        ShowSquare(i, j, s);
-        if(done){
-            if (currentPlayer == 'X') {
-                resultX++;
-            }
-            else {
-                resultO++;
-            }
-            updateResult();
-        }
-        return done;
     }
 
     private void updateResult() {
@@ -237,7 +253,10 @@ public class Controller {
         }
     }
 
-    private void ShowSquare(int i, int j, Square s){
+    private void ShowSquare(Square s){
+
+        int i = s.i;
+        int j = s.j;
 
         g = gameCanvas.getGraphicsContext2D();
 

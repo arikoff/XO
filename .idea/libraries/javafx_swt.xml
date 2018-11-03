@@ -9,8 +9,13 @@
       <root url="jar://C:/Distrib/Java/javafx-sdk-11/lib/javafx.media.jar!/" />
       <root url="jar://C:/Distrib/Java/javafx-sdk-11/lib/javafx.swing.jar!/" />
       <root url="jar://C:/Distrib/Java/javafx-sdk-11/lib/javafx.web.jar!/" />
+      <root url="jar://C:/Distrib/Java/netty-4.1.31.Final/jar/all-in-one/netty-all-4.1.31.Final.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <JAVADOC>
+      <root url="jar://C:/Distrib/Java/netty-4.1.31.Final/javadoc/netty-all-4.1.31.Final-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://C:/Distrib/Java/netty-4.1.31.Final/jar/all-in-one/netty-all-4.1.31.Final-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
